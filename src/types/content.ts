@@ -1,8 +1,10 @@
-export type StoryBlockLayout = 'center-text' | 'image-left' | 'image-right';
+export type StoryBlockLayout = 'center-text' | 'image-left' | 'image-right' | 'text-only';
 export type StoryBlock = {
   id: string;
   layout: StoryBlockLayout;
+  chapter?: string;
   title?: string;
+  subTitle?: string;
   body: string[];
   image?: string;
   caption?: string;
