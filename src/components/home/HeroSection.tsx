@@ -14,9 +14,9 @@ export default function HeroSection({ content }: Props) {
         className="relative z-10 px-6 text-center"
         initial={{ opacity: 0, filter: 'blur(10px)' }}
         animate={{ opacity: 1, filter: 'blur(0px)' }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
+        transition={{ duration: 8.0, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-widest text-text-primary">
+        <h1 className="font-serif font-extralight uppercase whitespace-nowrap text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-text-primary">
           {content?.title ?? 'Ethereal Float'}
         </h1>
         {content?.subtitle && (

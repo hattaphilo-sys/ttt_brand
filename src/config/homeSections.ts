@@ -5,8 +5,8 @@ export const homeSections: SectionData[] = [
     id: 'hero',
     type: 'Hero',
     content: {
-      title: 'Ethereal Float',
-      subtitle: '静と深度で満たす、余白の体験',
+      title: 'THE THINK TIME',
+      subtitle: '命の使い方を、問い直す。',
       href: '/story',
     },
   },

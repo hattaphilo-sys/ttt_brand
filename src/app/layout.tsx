@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Zen_Old_Mincho } from "next/font/google";
+import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import FloatingNav from "@/components/layout/FloatingNav";
 import { AmbientBackground } from "@/components/layout/AmbientBackground";
 
-const serif = Zen_Old_Mincho({
+const serif = Noto_Serif_JP({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["200", "300", "400"],
 });
 
 export const metadata: Metadata = {
