@@ -39,8 +39,8 @@ export const homeSections: SectionData[] = [
     id: 'concept-sub',
     type: 'ConceptFeature',
     content: {
-      heading: '（新規セクション）',
-      body: 'ここに本文を入力してください。',
+      heading: '問いと、無為。',
+      body: 'ここにあるのは',
     },
   },
   {
