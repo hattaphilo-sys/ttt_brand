@@ -72,12 +72,12 @@ export default function ConceptFeatureSection({ content }: Props) {
         {content?.body && (
             <div className="mt-10 flex justify-center text-center">
               <motion.div
-                className="max-w-lg text-sm md:text-base leading-relaxed text-text-muted text-center"
+                className="max-w-2xl text-sm md:text-base leading-relaxed text-text-muted text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                {formatBody(content.body)}
+                {typeof content.body === 'string' ? formatBody(content.body) : content.body}
               </motion.div>
             </div>
           )}

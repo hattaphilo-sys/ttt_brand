@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type SectionType =
   | 'Hero'
   | 'TextReveal'
@@ -17,7 +19,7 @@ export type TextRevealContent = {
 
 export type ConceptFeatureContent = {
   heading: string;
-  body: string;
+  body: string | ReactNode;
 };
 
 export type PhilosophyLinkContent = {
