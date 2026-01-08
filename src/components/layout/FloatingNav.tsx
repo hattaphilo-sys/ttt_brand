@@ -10,6 +10,7 @@ export default function FloatingNav() {
   const pathname = usePathname();
   const [isScrolling, setIsScrolling] = useState(false);
   const timerRef = useRef<number | undefined>(undefined);
+  const [inHomeHero, setInHomeHero] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -20,15 +21,37 @@ export default function FloatingNav() {
       timerRef.current = window.setTimeout(() => {
         setIsScrolling(false);
       }, 300);
+
+      if (pathname === '/') {
+        const h = window.innerHeight || 0;
+        const y = window.scrollY || 0;
+        setInHomeHero(y < h * 0.95);
+      } else {
+        setInHomeHero(false);
+      }
     };
+    const onResize = () => {
+      if (pathname === '/') {
+        const h = window.innerHeight || 0;
+        const y = window.scrollY || 0;
+        setInHomeHero(y < h * 0.95);
+      } else {
+        setInHomeHero(false);
+      }
+    };
+
+    // initialize state on mount
+    onResize();
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
     return () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
       if (timerRef.current) {
         window.clearTimeout(timerRef.current);
       }
     };
-  }, []);
+  }, [pathname]);
 
   const items = [
     { href: '/', label: 'Home', Icon: Home },
@@ -41,9 +64,9 @@ export default function FloatingNav() {
     <motion.nav
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40"
       initial={{ opacity: 0 }}
-      animate={{ opacity: isScrolling ? 1 : 0 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-      style={{ pointerEvents: isScrolling ? 'auto' : 'none' }}
+      animate={{ opacity: isScrolling || inHomeHero ? 0 : 1 }}
+      transition={{ duration: 1.0, ease: 'easeInOut' }}
+      style={{ pointerEvents: isScrolling || inHomeHero ? 'none' : 'auto' }}
     >
       <div className="flex items-center gap-2 rounded-full bg-depth/80 backdrop-blur-md border border-mist px-6 py-3">
         {items.map(({ href, label, Icon }) => {
