@@ -16,7 +16,7 @@ export default function TextRevealSection({ content }: Props) {
 
   return (
     <section className="relative min-h-[150vh]" ref={ref}>
-      <div className="absolute -top-24 left-0 right-0 h-40 bg-gradient-to-b from-accent-glow to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-void to-transparent pointer-events-none" />
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <motion.div
           className="px-6 text-center"
