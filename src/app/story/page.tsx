@@ -1,6 +1,6 @@
 import { storyBlocks } from '@/data/story';
 import StoryBlockView from '@/components/story/StoryBlock';
-import CTASection from '@/components/home/CTASection';
+import StoryFooterLinks from '@/components/story/StoryFooterLinks';
 
 export default function StoryPage() {
   return (
@@ -24,7 +24,7 @@ export default function StoryPage() {
         </p>
       </div>
 
-      <CTASection content={{ label: 'Next: Philosophy & Pricing', href: '/pricing' }} />
+      <StoryFooterLinks />
     </div>
   );
 }

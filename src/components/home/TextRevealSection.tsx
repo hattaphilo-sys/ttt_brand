@@ -27,8 +27,8 @@ const RevealLine = ({
 
   const opacity = useTransform(
     progress,
-    [start - 0.1, start, end, 0.95, 1],
-    [0, 0.2, 1, 1, 0]
+    [start - 0.1, start, end],
+    [0, 0.2, 1]
   );
 
   const blurVal = useTransform(
@@ -66,7 +66,7 @@ export default function TextRevealSection({ content }: Props) {
   const lines = text.split('\n');
 
   return (
-    <section className="relative min-h-[250vh]" ref={ref}>
+    <section className="relative min-h-[300vh]" ref={ref}>
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-void to-transparent pointer-events-none" />
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div className="px-6 text-center">

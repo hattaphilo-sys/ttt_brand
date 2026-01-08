@@ -18,7 +18,7 @@ export default function CTASection({ content }: Props) {
         viewport={{ once: true }}
       >
         <Link href={content?.href ?? '/apply'}>
-          <span className="px-6 py-3 rounded-full border border-mist text-text-primary bg-transparent hover:bg-white hover:text-black transition-colors">
+          <span className="inline-block px-10 py-4 rounded-full bg-white text-black font-serif tracking-widest text-sm md:text-base shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_35px_rgba(255,255,255,0.5)] transition-all duration-300">
             {label}
           </span>
         </Link>

@@ -42,7 +42,7 @@ export default function PricingPage() {
               custom={0}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-10%" }}
+              viewport={{ once: true, amount: 0.1 }}
               variants={articleVariants}
               className="pt-10 border-t border-mist/30"
             >
@@ -70,7 +70,7 @@ export default function PricingPage() {
               custom={1}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-10%" }}
+              viewport={{ once: true, amount: 0.1 }}
               variants={articleVariants}
               className="pt-10 border-t border-mist/30"
             >
@@ -98,7 +98,7 @@ export default function PricingPage() {
               custom={2}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-10%" }}
+              viewport={{ once: true, amount: 0.1 }}
               variants={articleVariants}
               className="pt-10 border-t border-mist/30"
             >
@@ -122,12 +122,51 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
-      <section className="pb-24">
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-xl md:text-2xl text-text-primary leading-relaxed">
+              この場に変容を求めた人々の、<br />覚悟の記録
+            </h2>
+          </div>
           <PricingCaseList cases={pricingCases} />
         </div>
       </section>
-      <CTASection content={{ label: 'Proceed to Apply', href: '/apply' }} />
+
+      <section className="pb-24 border-b border-mist">
+        <div className="max-w-3xl mx-auto px-6 space-y-12">
+          <div className="space-y-6">
+            <p className="text-text-primary leading-loose font-serif">
+              ＴＴＴに定価はありませんが、過去にこの「真空」を通過したクライアントたちが、自らの変容に対して提示し、支払った金額の<strong>実績平均（Central Range）</strong>は以下の通りです。
+            </p>
+            
+            <div className="py-8 text-center">
+              <p className="text-xl md:text-2xl font-serif text-text-primary">
+                Average Range:<br />
+                <span className="inline-block mt-2">¥1,100,000 〜 ¥1,600,000</span>
+              </p>
+            </div>
+
+            <p className="text-sm text-text-muted leading-loose">
+              ※これは請求額ではなく、彼らが自らの人生の再定義に対し、主体的につけた価値の平均値です。
+            </p>
+          </div>
+
+          <div className="space-y-6 text-text-primary leading-loose font-serif">
+            <p>
+              経済状況に応じて30万円台からスタートした若き挑戦者もいれば、200万円を超える投資を行った経営者もいます。
+            </p>
+            <p>
+              なぜ、この金額なのか。それは、既存の人生を一度終わらせ（社会的な死）、新たなOSを再起動するために必要なエネルギーの総量が、多くの人にとってこのレンジに収束したという「事実」に過ぎません。
+            </p>
+            <p>
+              あなたが提示する金額は、この平均より低くても、高くても構いません。重要なのは、その金額があなたにとって<strong>「過去を断ち切る鋭利なナイフ」</strong>として機能するかどうか、その一点のみです。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <CTASection content={{ label: 'Session 0へ', href: '/apply' }} />
     </div>
   );
 }

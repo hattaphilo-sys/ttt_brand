@@ -68,9 +68,9 @@ export default function ConceptDetailSection({ content }: Props) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-10%" }}
-            className="max-w-md mx-auto"
+            className="max-w-md mx-auto -mt-8"
           >
-            <p className="text-text-muted mb-8 font-serif">これら全てを、私はあなたに求めません。</p>
+            <p className="text-text-muted mb-16 font-serif">これら全てを、私はあなたに求めません。</p>
             <motion.ul 
               variants={listVariants}
               className="grid grid-cols-2 gap-x-8 gap-y-4 text-center"

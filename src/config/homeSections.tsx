@@ -93,7 +93,7 @@ export const homeSections: SectionData[] = [
     id: 'cta',
     type: 'CTA',
     content: {
-      label: 'Apply for Session',
+      label: 'Session 0へ',
       href: '/apply',
     },
   },

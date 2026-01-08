@@ -64,10 +64,127 @@ export default function ApplyPage() {
           対話の始まり
         </motion.h1>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-center text-text-muted mb-16 space-y-6 leading-loose font-serif text-sm md:text-base"
+        >
+          <p>
+            The Think Time は、<br/>
+            あなたの人生のOSを書き換えるための<br/>
+            6ヶ月間のプロジェクトです。
+          </p>
+          <p>
+            しかし、言葉だけで「真空」を<br/>
+            理解することは不可能です。
+          </p>
+          <p>
+            本契約を真剣に検討されている方に限り、<br/>
+            「Session 0」として一度だけ、扉を開放します。
+          </p>
+          <p>
+            これは「お試し」ではありません。
+          </p>
+          <p>
+            本番と同じクオリティ、<br/>
+            「時間無制限」で提供する真剣勝負です。
+          </p>
+          <p>
+            互いの人生を預けるに値する相手か。
+          </p>
+          <p>
+            その目と肌で、確かめに来てください。
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="max-w-md mx-auto mb-16 border border-mist/20 rounded-lg p-8 bg-depth/50 backdrop-blur-sm"
+        >
+          <h2 className="text-xl font-serif text-text-primary text-center mb-8">Session 0 について</h2>
+          <div className="space-y-6 text-sm md:text-base">
+            <div>
+              <h3 className="text-xs tracking-widest text-text-muted mb-1 font-serif">時間</h3>
+              <p className="text-text-primary">無制限（あなたが納得するまで）</p>
+            </div>
+            <div>
+              <h3 className="text-xs tracking-widest text-text-muted mb-1 font-serif">条件</h3>
+              <p className="text-text-primary">本契約（6ヶ月コース）に関心がある方限定</p>
+            </div>
+            <div>
+              <h3 className="text-xs tracking-widest text-text-muted mb-1 font-serif">場所</h3>
+              <p className="text-text-primary">オンライン / 希望に応じて対面（都内）</p>
+            </div>
+            <div>
+              <h3 className="text-xs tracking-widest text-text-muted mb-1 font-serif">価格</h3>
+              <p className="text-text-primary">要相談</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="max-w-md mx-auto mb-16"
+        >
+          <h2 className="text-xl font-serif text-text-primary text-center mb-12">申し込みの流れ</h2>
+          <div className="space-y-0 relative">
+            {/* Vertical Line */}
+            <div className="absolute left-[15px] top-4 bottom-4 w-px bg-white/20" />
+
+            {/* Items */}
+            {[
+              {
+                num: "01",
+                title: "Entry",
+                desc: "以下のフォームより、必要事項を入力し送信してください。"
+              },
+              {
+                num: "02",
+                title: "Manual Reply / 審査・返信",
+                desc: "私は、効率化のための自動返信を使用しません。\nいただいた内容にすべて目を通し、手動で個別に返信するため、数日のお時間をいただきます。\n\n※フォームの内容を確認し、「構造的なミスマッチ（お役に立てない）」と判断した場合、恐れ入りますが返信を差し控える場合がございます。予めご了承ください。"
+              },
+              {
+                num: "03",
+                title: "Scheduling / 日程・価格調整",
+                desc: "メールにて日程と価格を調整し、確定します。"
+              },
+              {
+                num: "04",
+                title: "Payment / お支払い",
+                desc: "事前の決済（銀行振込 / クレジットカード）をお願いしております。"
+              },
+              {
+                num: "05",
+                title: "Session 0 / 当日",
+                desc: "時間無制限の対話が始まります。\n準備はいりません。身一つでお越しください。"
+              }
+            ].map((item, i) => (
+              <div key={i} className="relative flex gap-8 pb-12 last:pb-0">
+                <div className="flex-none">
+                   <div className="w-[30px] h-[30px] rounded-full border border-white/20 bg-[#050505] flex items-center justify-center text-[10px] tracking-widest text-text-muted font-serif relative z-10">
+                     {item.num}
+                   </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-serif text-text-primary tracking-wider mb-3">{item.title}</h3>
+                  <p className="text-sm text-text-muted leading-relaxed whitespace-pre-line">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
         <motion.form
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.4 }}
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-8"
         >
