@@ -53,7 +53,7 @@ export default function ConceptSubContent() {
   ];
 
   return (
-    <div className="space-y-2 text-left md:text-center max-w-2xl mx-auto">
+    <div className="space-y-2 text-center max-w-2xl mx-auto">
       {lines.map((line, i) => {
         if (line === "") {
           return <div key={i} className="h-8" />;

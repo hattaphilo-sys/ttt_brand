@@ -41,7 +41,7 @@ export default function StoryBlockView({ block }: Props) {
         )}
 
         {/* Text Side */}
-        <div className={`w-full ${isTextOnly ? 'max-w-3xl text-center' : 'md:w-1/2'}`}>
+        <div className={`w-full ${isTextOnly ? 'max-w-3xl text-left' : 'md:w-1/2'}`}>
           
           {/* Header Group */}
           <div className="mb-12 relative">
@@ -58,7 +58,7 @@ export default function StoryBlockView({ block }: Props) {
              
              {block.subTitle && (
                 <motion.h3
-                  className="text-lg md:text-xl text-text-muted font-serif mb-4 tracking-wide italic"
+                  className="text-base md:text-lg text-text-muted font-serif mb-4 tracking-wide italic"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 }}
@@ -69,7 +69,7 @@ export default function StoryBlockView({ block }: Props) {
 
             {block.title && (
               <motion.h2
-                className="font-serif text-2xl md:text-4xl text-text-primary leading-relaxed"
+                className="font-serif text-xl md:text-3xl text-text-primary leading-relaxed"
                 initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true }}
@@ -84,7 +84,7 @@ export default function StoryBlockView({ block }: Props) {
             {block.body.map((p, i) => (
               <motion.p
                 key={i}
-                className={`font-serif leading-loose text-text-primary/80 text-base md:text-lg ${isTextOnly ? 'text-center' : ''}`}
+                className="font-serif leading-loose text-text-primary/80 text-[15px] md:text-base"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

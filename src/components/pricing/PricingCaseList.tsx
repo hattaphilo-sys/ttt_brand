@@ -23,11 +23,15 @@ export default function PricingCaseList({ cases }: Props) {
           >
             <motion.div layout="position" className="flex items-start justify-between gap-6">
               <div>
-                <p className="text-sm text-text-muted">{item.clientAttribute}</p>
-                <h3 className="mt-1 font-serif text-xl md:text-2xl text-text-primary">{item.catchCopy}</h3>
-                <p className="mt-2 text-sm text-text-muted">{item.summary}</p>
+                <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+                  <span className="text-xs tracking-widest text-text-primary/60 font-serif">{item.caseName}</span>
+                  <span className="hidden md:inline text-mist text-[10px]">/</span>
+                  <p className="text-sm text-text-muted">{item.clientAttribute}</p>
+                </div>
+                <h3 className="mt-1 font-serif text-lg md:text-xl text-text-primary">{item.title}</h3>
+                <p className="mt-2 text-sm text-text-muted font-serif">{item.price}</p>
               </div>
-              <div className="text-text-primary text-xl">
+              <div className="text-text-primary text-lg">
                 {isOpen ? '−' : '+'}
               </div>
             </motion.div>
@@ -41,9 +45,26 @@ export default function PricingCaseList({ cases }: Props) {
                   transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                   className="overflow-hidden"
                 >
-                  <p className="text-sm leading-relaxed text-text-primary/90 border-t border-white/10 pt-4">
-                    {item.detail}
-                  </p>
+                  <div className="border-t border-white/10 pt-4 space-y-6">
+                    <div>
+                      <h4 className="text-xs tracking-widest text-text-muted mb-2 font-serif">CONCEPT</h4>
+                      <p className="text-sm leading-loose text-text-primary/90">
+                        {item.concept}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-xs tracking-widest text-text-muted mb-2 font-serif">SPEC</h4>
+                      <p className="text-sm text-text-primary/90">
+                        {item.spec}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-xs tracking-widest text-text-muted mb-2 font-serif">PRICE (6 months)</h4>
+                      <p className="text-sm text-text-primary/90 font-serif">
+                        {item.price}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

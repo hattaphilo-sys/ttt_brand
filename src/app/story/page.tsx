@@ -17,7 +17,11 @@ export default function StoryPage() {
       
       {/* Signature */}
       <div className="py-20 text-center">
-        <p className="text-text-primary font-serif text-lg tracking-widest">Founder / Dialogue Partner hatta</p>
+        <p className="text-text-primary font-serif text-lg tracking-widest">
+          Founder / Dialogue Partner
+          <br />
+          hatta
+        </p>
       </div>
 
       <CTASection content={{ label: 'Next: Philosophy & Pricing', href: '/pricing' }} />

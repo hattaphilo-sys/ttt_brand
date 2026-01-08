@@ -54,7 +54,7 @@ export default function ConceptDetailSection({ content }: Props) {
             whileInView="visible"
             viewport={{ once: true, margin: "-10%" }}
             variants={itemVariants}
-            className="text-text-muted leading-loose"
+            className="text-text-muted leading-loose font-serif"
           >
             {bodyParts.map((part, i) => (
               <p key={i} className="mb-6 last:mb-0 whitespace-pre-line">
@@ -70,7 +70,7 @@ export default function ConceptDetailSection({ content }: Props) {
             viewport={{ once: true, margin: "-10%" }}
             className="max-w-md mx-auto"
           >
-            <p className="text-text-muted mb-8">これら全てを、私はあなたに求めません。</p>
+            <p className="text-text-muted mb-8 font-serif">これら全てを、私はあなたに求めません。</p>
             <motion.ul 
               variants={listVariants}
               className="grid grid-cols-2 gap-x-8 gap-y-4 text-center"

@@ -12,9 +12,11 @@ export type StoryBlock = {
 
 export type PricingCase = {
   id: string;
-  clientAttribute: string;
-  catchCopy: string;
-  summary: string;
-  detail: string;
+  caseName: string; // "CASE 01" etc
+  title: string; // "The OS Unlearning" etc
+  clientAttribute: string; // "会社員 / Webフリーランス" etc
+  concept: string; // CONCEPT本文
+  spec: string; // "月1回セッション + 共有ログ" etc
+  price: string; // "¥380,000" etc
 };
 
