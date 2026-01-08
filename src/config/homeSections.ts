@@ -27,7 +27,10 @@ export const homeSections: SectionData[] = [
     type: 'ConceptFeature',
     content: {
       heading: '対話相手は、自分自身。',
-      body: `- 自分の人生を真剣に生きるために
+      body: `- やり残したことにケリをつけるために
+- 意味のない人生に意味を見出すために
+- 成功と引き換えた代償を取り戻すために
+- 自分の人生を真剣に生きるために
 
 常識も、人の目も、道徳さえも
 一旦横において疑ってみる。
@@ -39,8 +42,9 @@ export const homeSections: SectionData[] = [
     id: 'concept-sub',
     type: 'ConceptFeature',
     content: {
-      heading: '問いと、無為。',
-      body: 'ここにあるのは',
+      heading: `ここにあるのは
+「問い」と「無為」`,
+      body: '',
     },
   },
   {
