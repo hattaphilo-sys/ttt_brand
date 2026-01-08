@@ -7,44 +7,73 @@ type Props = {
   content: ConceptFeatureContent;
 };
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+// 擬似ランダムな方向を生成 (SSRでの整合性のためindexベース)
+const getDirection = (index: number) => {
+  const directions = [
+    { x: 0, y: 30 },   // 下から
+    { x: 0, y: -30 },  // 上から
+    { x: 30, y: 0 },   // 右から
+    { x: -30, y: 0 },  // 左から
+  ];
+  return directions[index % directions.length];
+};
+
+// 擬似ランダムな遅延を生成
+const getDelay = (index: number) => {
+  // 0.3s 〜 1.2s の間でランダムに見えるように分散
+  return 0.3 + ((index * 7) % 10) * 0.1;
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } 
-  },
+  hidden: (i: number) => ({
+    opacity: 0,
+    ...getDirection(i),
+    filter: "blur(4px)"
+  }),
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 1.8, // ゆっくりとしたフェード
+      delay: getDelay(i),
+      ease: [0.2, 0.8, 0.2, 1],
+    }
+  }),
 };
 
 function formatBody(body: string) {
   const lines = body.split('\n');
   const nodes: React.ReactNode[] = [];
   let listItems: string[] = [];
+  let elementIndex = 0; // 通しのインデックス
 
   const flushList = (keyPrefix: string) => {
     if (listItems.length > 0) {
       nodes.push(
-        <motion.ul 
+        <ul 
           key={`${keyPrefix}-list`} 
           className="text-left inline-block mb-8 space-y-2 mx-auto"
-          variants={containerVariants}
         >
-          {listItems.map((item, i) => (
-            <motion.li key={i} className="flex items-start" variants={itemVariants}>
-              <span className="mr-2 text-mist">•</span>
-              <span>{item}</span>
-            </motion.li>
-          ))}
-        </motion.ul>
+          {listItems.map((item, i) => {
+            const currentIdx = elementIndex++;
+            return (
+              <motion.li 
+                key={i} 
+                className="flex items-start" 
+                custom={currentIdx}
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-5%" }}
+              >
+                <span className="mr-2 text-mist">•</span>
+                <span>{item}</span>
+              </motion.li>
+            );
+          })}
+        </ul>
       );
       listItems = [];
     }
@@ -58,8 +87,17 @@ function formatBody(body: string) {
       flushList(`line-${i}`);
       if (trimmed) {
         const parts = line.split(/(「考える時間」)/g);
+        const currentIdx = elementIndex++;
         nodes.push(
-          <motion.p key={`line-${i}`} className="mb-2 last:mb-0" variants={itemVariants}>
+          <motion.p 
+            key={`line-${i}`} 
+            className="mb-2 last:mb-0" 
+            custom={currentIdx}
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-5%" }}
+          >
              {parts.map((part, j) => 
                part === '「考える時間」' 
                  ? <span key={j} className="font-bold text-text-primary">{part}</span>
@@ -84,8 +122,9 @@ export default function ConceptFeatureSection({ content }: Props) {
         <div className="border-t border-b border-mist py-24 text-center">
           <motion.h2
             className="text-2xl md:text-3xl font-serif text-text-primary break-words whitespace-pre-line"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             {content?.heading ?? 'コンセプト'}
@@ -93,17 +132,11 @@ export default function ConceptFeatureSection({ content }: Props) {
         </div>
         {content?.body && (
             <div className="mt-10 flex justify-center text-center">
-              <motion.div
-                className="max-w-2xl text-sm md:text-base leading-relaxed text-text-muted text-center"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-10%" }}
-                variants={containerVariants}
-              >
+              <div className="max-w-2xl text-sm md:text-base leading-relaxed text-text-muted text-center">
                 {typeof content.body === 'string' ? formatBody(content.body) : content.body}
-              </motion.div>
+              </div>
             </div>
-          )}
+        )}
       </div>
     </section>
   );
