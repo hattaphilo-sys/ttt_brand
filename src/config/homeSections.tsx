@@ -15,12 +15,17 @@ export const homeSections: SectionData[] = [
     id: 'text-reveal',
     type: 'TextReveal',
     content: {
-      text: `あらゆるノイズが届かない「真空」の中で、
-生き方と在り方を「Think」する。
+      text: `あらゆるノイズが届かない
+「真空」の中で、
 
-1日1名、時間無制限の対話空間。
+生き方と在り方を
+「Think」する。
 
-「The Think Time」へようこそ。`,
+1日1名、時間無制限の
+対話空間。
+
+「The Think Time」へ
+ようこそ。`,
     },
   },
   {
