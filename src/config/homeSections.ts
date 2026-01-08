@@ -27,7 +27,9 @@ export const homeSections: SectionData[] = [
     type: 'ConceptFeature',
     content: {
       heading: '対話相手は、自分自身。',
-      body: '視覚的な静けさと触感的な奥行きを調和させたブランド体験を設計します。',
+      body: `- やり残したことにケリをつけるために
+- 意味のない人生に意味を見出すために
+- 成功と引き換えた代償を取り戻すために`,
     },
   },
   {
