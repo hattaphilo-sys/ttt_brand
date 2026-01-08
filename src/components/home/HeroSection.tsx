@@ -1,6 +1,6 @@
 "use client";
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Image from 'next/image';
 import type { HeroContent } from '@/types/section';
 
 type Props = {
@@ -16,7 +16,17 @@ export default function HeroSection({ content }: Props) {
         animate={{ opacity: 1, filter: 'blur(0px)' }}
         transition={{ duration: 8.0, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h1 className="font-serif font-extralight uppercase whitespace-nowrap text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-text-primary">
+        <div className="flex justify-center mb-8">
+          <Image
+            src="/ttt-logo.png"
+            alt="The Think Time Logo"
+            width={120}
+            height={120}
+            className="w-56 md:w-80 lg:w-96 h-auto"
+            priority
+          />
+        </div>
+        <h1 className="font-serif font-extralight uppercase whitespace-nowrap text-3xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight text-text-primary">
           {content?.title ?? 'Ethereal Float'}
         </h1>
         {content?.subtitle && (
@@ -24,13 +34,30 @@ export default function HeroSection({ content }: Props) {
             {content.subtitle}
           </p>
         )}
-        <div className="mt-6">
-          <Link
-            href={content?.href ?? '/story'}
-            className="inline-flex items-center border border-mist px-6 py-2 rounded-full text-sm hover:bg-white/10 transition"
-          >
-            Read Story
-          </Link>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5, duration: 1.5 }}
+      >
+        <span className="text-[10px] tracking-[0.3em] text-text-muted uppercase opacity-40 font-light">
+          Scroll
+        </span>
+        <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-text-muted/30 to-transparent overflow-hidden">
+          <motion.div
+            className="w-full h-full bg-gradient-to-b from-transparent via-text-primary/50 to-transparent"
+            animate={{
+              y: [-64, 64],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
         </div>
       </motion.div>
     </section>

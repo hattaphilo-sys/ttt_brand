@@ -38,7 +38,7 @@ const itemVariants = {
     transition: {
       duration: 1.8, // ゆっくりとしたフェード
       delay: getDelay(i),
-      ease: [0.2, 0.8, 0.2, 1],
+      ease: [0.2, 0.8, 0.2, 1] as const,
     }
   }),
 };

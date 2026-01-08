@@ -30,56 +30,48 @@ const itemVariants = {
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 1.8, // ゆっくりとしたフェード
+      duration: 3.8, // ゆっくりとしたフェード
       delay: getDelay(i),
-      ease: [0.2, 0.8, 0.2, 1],
+      ease: [0.2, 0.8, 0.2, 1] as const,
     }
   }),
 };
 
 export default function ConceptSubContent() {
+  const lines = [
+    "何かを新しく学び足す必要はありません。",
+    "「偏った学び」を静かに手放す場所です。",
+    "",
+    "生まれたての赤子のように",
+    "一度まっさらな心にリセットする。",
+    "",
+    "無限の可能性を取り戻し",
+    "生きながらにして生まれ変わる。",
+    "",
+    "まったく新しい在り方を手にして",
+    "まったく新しい生き方を可能にしてください。"
+  ];
+
   return (
-    <div className="space-y-12 text-left md:text-center">
-      <motion.p 
-        className="leading-loose text-text-muted" 
-        custom={1}
-        variants={itemVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-5%" }}
-      >
-        成果を出すこと。変化すること。<br />
-        正しくあること。うまく話すこと。<br />
-        <br />
-        これら全てを、私はあなたに求めません。
-      </motion.p>
-
-      <ul className="grid grid-cols-2 gap-x-8 gap-y-4 max-w-xs mx-auto text-lg text-text-primary font-bold">
-        <motion.li custom={2} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-5%" }}>- 教えない</motion.li>
-        <motion.li custom={5} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-5%" }}>- 導かない</motion.li>
-        <motion.li custom={3} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-5%" }}>- 治さない</motion.li>
-        <motion.li custom={6} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-5%" }}>- 救わない</motion.li>
-        <motion.li custom={4} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-5%" }}>- 評価しない</motion.li>
-        <motion.li custom={7} variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-5%" }}>- 期待しない</motion.li>
-      </ul>
-
-      <motion.p 
-        className="leading-loose text-text-muted" 
-        custom={8}
-        variants={itemVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-5%" }}
-      >
-        ただあなたの内面を映す鏡 - 問い - として<br />
-        同じ時間と空間に存在します。<br />
-        <br />
-        あなたが望むのであれば、<br />
-        永遠に沈黙が続いてもよい。<br />
-        <br />
-        日常生活では決してあり得ない<br />
-        <strong className="text-text-primary font-bold">100％の対等性と心理的安全性</strong>を創出します。
-      </motion.p>
+    <div className="space-y-2 text-left md:text-center max-w-2xl mx-auto">
+      {lines.map((line, i) => {
+        if (line === "") {
+          return <div key={i} className="h-8" />;
+        }
+        return (
+          <motion.p
+            key={i}
+            className="leading-loose text-text-muted"
+            custom={i}
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-5%" }}
+          >
+            {line}
+          </motion.p>
+        );
+      })}
     </div>
   );
 }

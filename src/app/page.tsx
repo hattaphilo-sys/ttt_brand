@@ -4,12 +4,14 @@ import type {
   HeroContent,
   TextRevealContent,
   ConceptFeatureContent,
+  ConceptDetailContent,
   PhilosophyLinkContent,
   CTAContent,
 } from '../types/section';
 import HeroSection from '../components/home/HeroSection';
 import TextRevealSection from '../components/home/TextRevealSection';
 import ConceptFeatureSection from '../components/home/ConceptFeatureSection';
+import ConceptDetailSection from '../components/home/ConceptDetailSection';
 import PhilosophyLinkSection from '../components/home/PhilosophyLinkSection';
 import CTASection from '../components/home/CTASection';
 
@@ -29,6 +31,13 @@ export default function Home() {
               <ConceptFeatureSection
                 key={section.id}
                 content={section.content as ConceptFeatureContent}
+              />
+            );
+          case 'ConceptDetail':
+            return (
+              <ConceptDetailSection
+                key={section.id}
+                content={section.content as ConceptDetailContent}
               />
             );
           case 'PhilosophyLink':

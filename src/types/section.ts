@@ -4,6 +4,7 @@ export type SectionType =
   | 'Hero'
   | 'TextReveal'
   | 'ConceptFeature'
+  | 'ConceptDetail'
   | 'PhilosophyLink'
   | 'CTA';
 
@@ -22,6 +23,14 @@ export type ConceptFeatureContent = {
   body: string | ReactNode;
 };
 
+export type ConceptDetailContent = {
+  heading: string;
+  subheading: string;
+  body: string;
+  listItems: string[];
+  footer: string;
+};
+
 export type PhilosophyLinkContent = {
   href: string;
   title: string;
@@ -37,6 +46,7 @@ export type SectionContent =
   | HeroContent
   | TextRevealContent
   | ConceptFeatureContent
+  | ConceptDetailContent
   | PhilosophyLinkContent
   | CTAContent;
 

@@ -45,20 +45,39 @@ export const homeSections: SectionData[] = [
     },
   },
   {
-    id: 'concept-sub',
-    type: 'ConceptFeature',
+    id: 'concept-detail',
+    type: 'ConceptDetail',
     content: {
-      heading: `ここにあるのは
+      heading: `ここにあるのは、
 「問い」と「無為」`,
-      body: <ConceptSubContent />,
+      subheading: `ここにあるのは、
+「問い」と「無為」`,
+      body: `成果を出すこと。変化すること。
+正しくあること。うまく話すこと。`,
+      listItems: [
+        '教えない',
+        '導かない',
+        '治さない',
+        '救わない',
+        '評価しない',
+        '期待しない'
+      ],
+      footer: `ただあなたの内面を映す鏡 - 問い - として
+同じ時間と空間に存在します。
+
+あなたが望むのであれば、
+永遠に沈黙が続いてもよい。
+
+日常生活では決してあり得ない
+**100％の対等性と心理的安全性**を創出します。`
     },
   },
   {
-    id: 'new-section',
+    id: 'concept-sub',
     type: 'ConceptFeature',
     content: {
-      heading: '（新規セクション）',
-      body: 'ここに本文を入力してください。',
+      heading: '目指すのは、「ゼロ」。',
+      body: <ConceptSubContent />,
     },
   },
   {
