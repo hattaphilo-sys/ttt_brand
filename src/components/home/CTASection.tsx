@@ -10,7 +10,7 @@ type Props = {
 export default function CTASection({ content }: Props) {
   const label = content?.label ?? 'Get Started';
   return (
-    <section className="py-24 bg-void">
+    <section className="py-24">
       <motion.div
         className="max-w-5xl mx-auto px-6 flex items-center justify-center"
         initial={{ opacity: 0, y: 20 }}

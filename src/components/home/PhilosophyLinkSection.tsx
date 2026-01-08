@@ -13,7 +13,7 @@ export default function PhilosophyLinkSection({ content }: Props) {
   const desc = content?.desc ?? '思想に触れる';
 
   return (
-    <section className="py-24 bg-void">
+    <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <Link href={href} className="block">
           <motion.div

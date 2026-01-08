@@ -9,8 +9,7 @@ type Props = {
 
 export default function HeroSection({ content }: Props) {
   return (
-    <section className="relative h-screen flex items-center justify-center bg-void">
-      <div className="absolute inset-0 bg-accent-glow" />
+    <section className="relative h-screen flex items-center justify-center">
       <motion.div
         className="relative z-10 px-6 text-center"
         initial={{ opacity: 0, filter: 'blur(10px)' }}

@@ -4,7 +4,7 @@ import CTASection from '@/components/home/CTASection';
 
 export default function StoryPage() {
   return (
-    <div className="bg-void">
+    <div>
       <header className="py-24 border-b border-mist">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="font-serif text-5xl md:text-6xl text-text-primary">Story</h1>

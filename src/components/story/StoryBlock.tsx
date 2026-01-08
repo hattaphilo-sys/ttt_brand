@@ -13,7 +13,7 @@ export default function StoryBlockView({ block }: Props) {
       : 'md:flex-col';
 
   return (
-    <section className="py-16 md:py-24 bg-void overflow-hidden">
+    <section className="py-16 md:py-24 overflow-hidden">
       <div className={`max-w-6xl mx-auto px-6 flex flex-col ${dir} gap-8 md:gap-12 items-center`}>
         {/* Image Side */}
         <motion.div

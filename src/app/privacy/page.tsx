@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <main className="bg-void">
+    <main>
       <section className="max-w-3xl mx-auto py-24 px-6">
         <div className="space-y-10">
           <div>

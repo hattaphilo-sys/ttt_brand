@@ -3,6 +3,7 @@ import { Zen_Old_Mincho } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import FloatingNav from "@/components/layout/FloatingNav";
+import { AmbientBackground } from "@/components/layout/AmbientBackground";
 
 const serif = Zen_Old_Mincho({
   variable: "--font-serif",
@@ -21,14 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${serif.variable} bg-void text-primary antialiased`}>
+    <html lang="ja">
+      <body className={`${serif.variable} text-primary antialiased`}>
+        <AmbientBackground />
+        <FloatingNav />
         <main className="relative z-10 min-h-screen flex flex-col">
           {children}
           <Footer />
         </main>
-        <FloatingNav />
-        <div className="fixed inset-0 z-50 pointer-events-none opacity-20 bg-[url('/noise.svg')] mix-blend-overlay"></div>
       </body>
     </html>
   );
