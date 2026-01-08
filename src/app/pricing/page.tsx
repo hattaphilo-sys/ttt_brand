@@ -27,7 +27,7 @@ export default function PricingPage() {
       <section className="py-24 border-b border-mist">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="mx-auto max-w-[18ch] md:max-w-none font-serif text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-text-primary break-words">
-            変容に、定価はない。
+            真空に、定価はない。
           </h1>
         </div>
       </section>

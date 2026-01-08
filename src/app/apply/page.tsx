@@ -36,13 +36,18 @@ export default function ApplyPage() {
     setIsSubmitting(false);
   };
 
+  const slowTransition = {
+    duration: 1.5,
+    ease: [0.22, 1, 0.36, 1] as const
+  };
+
   return (
     <div className="min-h-screen pt-32 pb-20 px-6 flex justify-center items-center relative overflow-hidden">
       {isExiting && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.0, ease: "easeInOut" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           className="fixed inset-0 z-50 bg-black pointer-events-none"
         />
       )}
@@ -54,20 +59,21 @@ export default function ApplyPage() {
             ? { opacity: 0, filter: "blur(10px)", scale: 0.95 }
             : { opacity: 1, filter: "blur(0px)", scale: 1 }
         }
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={slowTransition}
           className="font-serif text-3xl md:text-4xl text-center mb-12 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
         >
           対話の始まり
         </motion.h1>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
+          transition={{ ...slowTransition, delay: 0.2 }}
           className="text-center text-text-muted mb-16 space-y-6 leading-loose font-serif text-sm md:text-base"
         >
           <p>
@@ -87,8 +93,8 @@ export default function ApplyPage() {
             これは「お試し」ではありません。
           </p>
           <p>
-            本番と同じクオリティ、<br/>
-            「時間無制限」で提供する真剣勝負です。
+            既存クライアントと同条件、<br/>
+            「1日1名限定/時間無制限」で行います。
           </p>
           <p>
             互いの人生を預けるに値する相手か。
@@ -99,9 +105,10 @@ export default function ApplyPage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={slowTransition}
           className="max-w-md mx-auto mb-16 border border-mist/20 rounded-lg p-8 bg-depth/50 backdrop-blur-sm"
         >
           <h2 className="text-xl font-serif text-text-primary text-center mb-8">Session 0 について</h2>
@@ -126,15 +133,22 @@ export default function ApplyPage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={slowTransition}
           className="max-w-md mx-auto mb-16"
         >
           <h2 className="text-xl font-serif text-text-primary text-center mb-12">申し込みの流れ</h2>
           <div className="space-y-0 relative">
             {/* Vertical Line */}
-            <div className="absolute left-[15px] top-4 bottom-4 w-px bg-white/20" />
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute left-[15px] top-4 bottom-4 w-px bg-white/20 origin-top"
+            />
 
             {/* Items */}
             {[
@@ -164,7 +178,14 @@ export default function ApplyPage() {
                 desc: "時間無制限の対話が始まります。\n準備はいりません。身一つでお越しください。"
               }
             ].map((item, i) => (
-              <div key={i} className="relative flex gap-8 pb-12 last:pb-0">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ ...slowTransition, delay: i * 0.2 }}
+                className="relative flex gap-8 pb-12 last:pb-0"
+              >
                 <div className="flex-none">
                    <div className="w-[30px] h-[30px] rounded-full border border-white/20 bg-[#050505] flex items-center justify-center text-[10px] tracking-widest text-text-muted font-serif relative z-10">
                      {item.num}
@@ -176,15 +197,16 @@ export default function ApplyPage() {
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
 
         <motion.form
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={slowTransition}
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-8"
         >
