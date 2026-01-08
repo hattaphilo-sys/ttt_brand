@@ -10,8 +10,16 @@ type Props = {
 export default function TextRevealSection({ content }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-  const blurPx = useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, 10]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.2, 1, 0.2]);
+  const blurPx = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.3, 0.5, 0.7, 0.85, 1],
+    [8, 2, 0, 0, 0, 2, 8]
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.3, 0.5, 0.7, 0.85, 1],
+    [0.5, 0.85, 1, 0.95, 1, 0.85, 0.5]
+  );
   const blurFilter = useTransform(blurPx, (v: number) => `blur(${v}px)`);
 
   return (
@@ -25,7 +33,7 @@ export default function TextRevealSection({ content }: Props) {
           viewport={{ once: true, margin: '-20%' }}
         >
           <motion.p
-            className="text-2xl md:text-3xl font-serif text-text-primary whitespace-pre-line"
+            className="text-base md:text-xl font-serif text-text-primary whitespace-pre-line break-words"
             style={{ filter: blurFilter, opacity }}
           >
             {content?.text ?? '静けさの中に、輪郭が現れる'}
