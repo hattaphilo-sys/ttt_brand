@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { MinimalInput } from "@/components/apply/MinimalInput";
+import { submitApplication } from "@/actions/submitApplication";
 
 type FormData = {
   name: string;
@@ -23,10 +24,16 @@ export default function ApplyPage() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsExiting(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    router.push("/thanks");
+    const res = await submitApplication(data);
+    if (res.success) {
+      setIsExiting(true);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      router.push("/thanks");
+    } else {
+      alert(res.error);
+    }
+    setIsSubmitting(false);
   };
 
   return (
