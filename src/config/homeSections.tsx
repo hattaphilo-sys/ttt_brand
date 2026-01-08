@@ -1,4 +1,5 @@
 import { SectionData } from '@/types/section';
+import ConceptSubContent from '@/components/home/ConceptSubContent';
 
 export const homeSections: SectionData[] = [
   {
@@ -44,36 +45,7 @@ export const homeSections: SectionData[] = [
     content: {
       heading: `ここにあるのは
 「問い」と「無為」`,
-      body: (
-        <div className="space-y-12 text-left md:text-center">
-          <p className="leading-loose text-text-muted">
-            成果を出すこと。変化すること。<br />
-            正しくあること。うまく話すこと。<br />
-            <br />
-            これら全てを、私はあなたに求めません。
-          </p>
-
-          <ul className="grid grid-cols-2 gap-x-8 gap-y-4 max-w-xs mx-auto text-lg text-text-primary font-bold">
-            <li>- 教えない</li>
-            <li>- 導かない</li>
-            <li>- 治さない</li>
-            <li>- 救わない</li>
-            <li>- 評価しない</li>
-            <li>- 期待しない</li>
-          </ul>
-
-          <p className="leading-loose text-text-muted">
-            ただあなたの内面を映す鏡 - 問い - として<br />
-            同じ時間と空間に存在します。<br />
-            <br />
-            あなたが望むのであれば、<br />
-            永遠に沈黙が続いてもよい。<br />
-            <br />
-            日常生活では決してあり得ない<br />
-            <strong className="text-text-primary font-bold">100％の対等性と心理的安全性</strong>を創出します。
-          </p>
-        </div>
-      ),
+      body: <ConceptSubContent />,
     },
   },
   {

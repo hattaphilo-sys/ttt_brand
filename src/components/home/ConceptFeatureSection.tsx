@@ -7,6 +7,24 @@ type Props = {
   content: ConceptFeatureContent;
 };
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } 
+  },
+};
+
 function formatBody(body: string) {
   const lines = body.split('\n');
   const nodes: React.ReactNode[] = [];
@@ -15,14 +33,18 @@ function formatBody(body: string) {
   const flushList = (keyPrefix: string) => {
     if (listItems.length > 0) {
       nodes.push(
-        <ul key={`${keyPrefix}-list`} className="text-left inline-block mb-8 space-y-2 mx-auto">
+        <motion.ul 
+          key={`${keyPrefix}-list`} 
+          className="text-left inline-block mb-8 space-y-2 mx-auto"
+          variants={containerVariants}
+        >
           {listItems.map((item, i) => (
-            <li key={i} className="flex items-start">
+            <motion.li key={i} className="flex items-start" variants={itemVariants}>
               <span className="mr-2 text-mist">•</span>
               <span>{item}</span>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       );
       listItems = [];
     }
@@ -37,13 +59,13 @@ function formatBody(body: string) {
       if (trimmed) {
         const parts = line.split(/(「考える時間」)/g);
         nodes.push(
-          <p key={`line-${i}`} className="mb-2 last:mb-0">
+          <motion.p key={`line-${i}`} className="mb-2 last:mb-0" variants={itemVariants}>
              {parts.map((part, j) => 
                part === '「考える時間」' 
                  ? <span key={j} className="font-bold text-text-primary">{part}</span>
                  : part
              )}
-          </p>
+          </motion.p>
         );
       } else {
         nodes.push(<div key={`line-${i}`} className="h-4" />);
@@ -73,9 +95,10 @@ export default function ConceptFeatureSection({ content }: Props) {
             <div className="mt-10 flex justify-center text-center">
               <motion.div
                 className="max-w-2xl text-sm md:text-base leading-relaxed text-text-muted text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }}
+                variants={containerVariants}
               >
                 {typeof content.body === 'string' ? formatBody(content.body) : content.body}
               </motion.div>
