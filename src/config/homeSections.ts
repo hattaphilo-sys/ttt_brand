@@ -26,7 +26,7 @@ export const homeSections: SectionData[] = [
     id: 'concept-feature',
     type: 'ConceptFeature',
     content: {
-      heading: 'コンセプト',
+      heading: '対話相手は、自分自身。',
       body: '視覚的な静けさと触感的な奥行きを調和させたブランド体験を設計します。',
     },
   },
