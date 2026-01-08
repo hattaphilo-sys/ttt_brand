@@ -49,6 +49,14 @@ export const homeSections: SectionData[] = [
     },
   },
   {
+    id: 'new-section',
+    type: 'ConceptFeature',
+    content: {
+      heading: '（新規セクション）',
+      body: 'ここに本文を入力してください。',
+    },
+  },
+  {
     id: 'philosophy',
     type: 'PhilosophyLink',
     content: {
