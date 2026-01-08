@@ -8,6 +8,7 @@ export type SectionType =
 export type HeroContent = {
   title: string;
   subtitle?: string;
+  href?: string;
 };
 
 export type TextRevealContent = {
@@ -27,6 +28,7 @@ export type PhilosophyLinkContent = {
 
 export type CTAContent = {
   label: string;
+  href?: string;
 };
 
 export type SectionContent =

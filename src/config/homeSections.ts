@@ -7,6 +7,7 @@ export const homeSections: SectionData[] = [
     content: {
       title: 'Ethereal Float',
       subtitle: '静と深度で満たす、余白の体験',
+      href: '/story',
     },
   },
   {
@@ -28,7 +29,7 @@ export const homeSections: SectionData[] = [
     id: 'philosophy',
     type: 'PhilosophyLink',
     content: {
-      href: '/philosophy',
+      href: '/pricing',
       title: 'Philosophy',
       desc: '思想に触れる',
     },
@@ -37,7 +38,8 @@ export const homeSections: SectionData[] = [
     id: 'cta',
     type: 'CTA',
     content: {
-      label: 'Get Started',
+      label: 'Apply for Session',
+      href: '/apply',
     },
   },
 ];

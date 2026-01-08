@@ -1,5 +1,12 @@
 import { homeSections } from '../config/homeSections';
-import type { SectionData } from '../types/section';
+import type {
+  SectionData,
+  HeroContent,
+  TextRevealContent,
+  ConceptFeatureContent,
+  PhilosophyLinkContent,
+  CTAContent,
+} from '../types/section';
 import HeroSection from '../components/home/HeroSection';
 import TextRevealSection from '../components/home/TextRevealSection';
 import ConceptFeatureSection from '../components/home/ConceptFeatureSection';
@@ -12,27 +19,27 @@ export default function Home() {
       {homeSections.map((section: SectionData) => {
         switch (section.type) {
           case 'Hero':
-            return <HeroSection key={section.id} content={section.content} />;
+            return <HeroSection key={section.id} content={section.content as HeroContent} />;
           case 'TextReveal':
             return (
-              <TextRevealSection key={section.id} content={section.content} />
+              <TextRevealSection key={section.id} content={section.content as TextRevealContent} />
             );
           case 'ConceptFeature':
             return (
               <ConceptFeatureSection
                 key={section.id}
-                content={section.content}
+                content={section.content as ConceptFeatureContent}
               />
             );
           case 'PhilosophyLink':
             return (
               <PhilosophyLinkSection
                 key={section.id}
-                content={section.content}
+                content={section.content as PhilosophyLinkContent}
               />
             );
           case 'CTA':
-            return <CTASection key={section.id} content={section.content} />;
+            return <CTASection key={section.id} content={section.content as CTAContent} />;
           default:
             return null;
         }

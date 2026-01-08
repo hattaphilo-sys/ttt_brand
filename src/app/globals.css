@@ -29,4 +29,12 @@
 
 .noise-overlay {
   pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, rgba(0,0,0,0.04) 1px, rgba(0,0,0,0.04) 2px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, rgba(0,0,0,0.04) 1px, rgba(0,0,0,0.04) 2px);
+  filter: contrast(140%) brightness(110%);
 }

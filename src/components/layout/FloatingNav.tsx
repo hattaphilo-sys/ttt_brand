@@ -3,9 +3,32 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, BookOpen, Gem, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 export default function FloatingNav() {
   const pathname = usePathname();
+  const [isScrolling, setIsScrolling] = useState(false);
+  const timerRef = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolling(true);
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
+      timerRef.current = window.setTimeout(() => {
+        setIsScrolling(false);
+      }, 300);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   const items = [
     { href: '/', label: 'Home', Icon: Home },
@@ -15,11 +38,17 @@ export default function FloatingNav() {
   ];
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
+    <motion.nav
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isScrolling ? 1 : 0 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      style={{ pointerEvents: isScrolling ? 'auto' : 'none' }}
+    >
       <div className="flex items-center gap-2 rounded-full bg-depth/80 backdrop-blur-md border border-mist px-6 py-3">
         {items.map(({ href, label, Icon }) => {
           const isActive = pathname === href;
-          const base = isActive ? 'text-primary' : 'text-muted';
+          const base = isActive ? 'text-primary' : 'text-primary/80';
           const applyEmphasis = label === 'Apply';
           return (
             <Link
@@ -30,13 +59,12 @@ export default function FloatingNav() {
                 applyEmphasis ? 'text-primary bg-mist/10' : base
               }`}
             >
-              <Icon size={20} />
+              <Icon size={20} className="text-white/80" />
               <span className="hidden md:inline text-sm">{label}</span>
             </Link>
           );
         })}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
-

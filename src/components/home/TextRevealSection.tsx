@@ -1,3 +1,6 @@
+"use client";
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import type { TextRevealContent } from '@/types/section';
 
 type Props = {
@@ -5,12 +8,28 @@ type Props = {
 };
 
 export default function TextRevealSection({ content }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+  const blurPx = useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, 10]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.2, 1, 0.2]);
+  const blurFilter = useTransform(blurPx, (v: number) => `blur(${v}px)`);
+
   return (
-    <section className="h-screen flex items-center justify-center bg-depth">
-      <div className="px-6 text-center">
-        <p className="text-2xl text-text-primary">
-          {content?.text ?? '静けさの中に、輪郭が現れる'}
-        </p>
+    <section className="min-h-[150vh] bg-depth" ref={ref}>
+      <div className="sticky top-0 h-screen flex items-center justify-center">
+        <motion.div
+          className="px-6 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20%' }}
+        >
+          <motion.p
+            className="text-2xl md:text-3xl font-serif text-text-primary"
+            style={{ filter: blurFilter, opacity }}
+          >
+            {content?.text ?? '静けさの中に、輪郭が現れる'}
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );
