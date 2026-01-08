@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Zen_Old_Mincho } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/layout/Footer";
+import FloatingNav from "@/components/layout/FloatingNav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const serif = Zen_Old_Mincho({
+  variable: "--font-serif",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -24,10 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${serif.variable} bg-void text-primary antialiased`}>
+        <main className="relative z-10 min-h-screen flex flex-col">
+          {children}
+          <Footer />
+        </main>
+        <FloatingNav />
+        <div className="fixed inset-0 z-50 pointer-events-none opacity-20 bg-[url('/noise.svg')] mix-blend-overlay"></div>
       </body>
     </html>
   );
