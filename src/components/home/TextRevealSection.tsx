@@ -25,7 +25,7 @@ export default function TextRevealSection({ content }: Props) {
           viewport={{ once: true, margin: '-20%' }}
         >
           <motion.p
-            className="text-2xl md:text-3xl font-serif text-text-primary"
+            className="text-2xl md:text-3xl font-serif text-text-primary whitespace-pre-line"
             style={{ filter: blurFilter, opacity }}
           >
             {content?.text ?? '静けさの中に、輪郭が現れる'}

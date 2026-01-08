@@ -14,7 +14,12 @@ export const homeSections: SectionData[] = [
     id: 'text-reveal',
     type: 'TextReveal',
     content: {
-      text: '薄明の空気に、思想の輪郭がにじむ',
+      text: `あらゆるノイズが届かない「真空」の中で、
+生き方と在り方を「Think」する。
+
+1日1名、時間無制限の対話空間。
+
+「The Think Time」へようこそ。`,
     },
   },
   {
